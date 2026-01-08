@@ -8,19 +8,6 @@
 > **Platform Pelaporan Warga Tercepat & Terstruktur.**
 > Aplikasi mobile berbasis Flutter untuk melaporkan insiden darurat dengan formulir dinamis dan bukti lapor digital.
 
----
-
-## 📸 Screenshots & Preview
-
-| **Modern Dashboard** | **Dynamic Form** | **History & Print** | **Smart Detail** |
-|:---:|:---:|:---:|:---:|
-| ![Dashboard](https://via.placeholder.com/200x400?text=Dashboard+UI) | ![Form](https://via.placeholder.com/200x400?text=Dynamic+Form) | ![History](https://via.placeholder.com/200x400?text=History+List) | ![Detail](https://via.placeholder.com/200x400?text=Detail+Page) |
-| *Gradient Icons & 4-Column Grid* | *Context-Aware Input Fields* | *Export Receipt to .txt* | *Rounded Header & Smart Text* |
-
-*(Ganti link placeholder di atas dengan screenshot asli aplikasi Anda)*
-
----
-
 ## ✨ Fitur Utama (Key Features)
 
 Aplikasi ini dirancang untuk kecepatan dan akurasi data:
