@@ -9,6 +9,10 @@ import 'data/repositories/auth_repository_impl.dart';
 import 'presentation/providers/auth_provider.dart';
 import 'presentation/pages/auth/login_page.dart';
 import 'presentation/pages/auth/register_page.dart';
+import 'presentation/pages/dashboard/dashboard_page.dart';
+import 'presentation/pages/report/create_report_page.dart';
+import 'data/repositories/report_repository_impl.dart';
+import 'presentation/providers/report_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +30,7 @@ void main() async {
   );
 
   final reportRemote = ReportRemoteDataSourceImpl(client: httpClient);
+  final reportRepo = ReportRepositoryImpl(remoteDataSource: reportRemote);
   final bool isLoggedIn = await authRepo.checkLoginStatus();
 
   runApp(
@@ -33,6 +38,9 @@ void main() async {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AuthProvider(repository: authRepo),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ReportProvider(repository: reportRepo),
         ),
       ],
       child: MaterialApp(
@@ -46,6 +54,8 @@ void main() async {
         routes: {
           '/login': (context) => LoginPage(),
           '/register': (context) => RegisterPage(),
+          '/dashboard': (context) => DashboardPage(),
+          '/create_report': (context) => CreateReportPage(),
         },
       ),
     ),
