@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../providers/report_provider.dart';
 import '../../../core/constants/api_constants.dart';
+import '../../widgets/custom_drawer.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -94,7 +95,7 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ),
       ),
-
+      drawer: CustomDrawer(),
       body: Consumer<ReportProvider>(
         builder: (ctx, prov, _) => RefreshIndicator(
           onRefresh: () async =>
