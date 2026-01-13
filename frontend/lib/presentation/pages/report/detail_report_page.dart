@@ -22,7 +22,6 @@ class DetailReportPage extends StatelessWidget {
       meta = jsonDecode(report.metadata ?? "{}");
     } catch (_) {}
     final mainColor = _color(report.urgency);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -33,6 +32,34 @@ class DetailReportPage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black87),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delete_outline, color: Colors.red),
+            onPressed: () async {
+              if (await showDialog(
+                    context: context,
+                    builder: (c) => AlertDialog(
+                      title: Text("Hapus Laporan?"),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(c, true),
+                          child: Text(
+                            "YA",
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ) ==
+                  true) {
+                Provider.of<ReportProvider>(
+                  context,
+                  listen: false,
+                ).deleteReport(report.id).then((_) => Navigator.pop(context));
+              }
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,13 +81,11 @@ class DetailReportPage extends StatelessWidget {
                 ),
               ),
             ),
-
             Padding(
               padding: EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // 2. JUDUL & LABEL
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -185,10 +210,18 @@ class DetailReportPage extends StatelessWidget {
                       color: Colors.black87,
                     ),
                   ),
-
                   SizedBox(height: 40),
                   Divider(),
-
+                  Center(
+                    child: Text(
+                      "Dilaporkan pada: ${report.createdAt}",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 20),
                 ],
               ),
