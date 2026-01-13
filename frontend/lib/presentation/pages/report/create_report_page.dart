@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../providers/report_provider.dart';
 import '../../../core/constants/linux_camera_helper.dart';
+import 'report_dynamic_fields.dart';
 
 class CreateReportPage extends StatefulWidget {
   const CreateReportPage({Key? key}) : super(key: key);
@@ -289,7 +290,10 @@ class _CreateReportPageState extends State<CreateReportPage> {
                 ],
               ),
               const SizedBox(height: 15),
-
+              ReportDynamicFields(
+                category: _selectedCategory,
+                controllers: _dynamicControllers,
+              ),
               const SizedBox(height: 10),
               TextFormField(
                 controller: _titleController,
