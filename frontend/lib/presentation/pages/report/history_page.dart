@@ -5,6 +5,7 @@ import '../../providers/report_provider.dart';
 import '../../../core/constants/api_constants.dart';
 import '../../../domain/entities/report.dart';
 import 'detail_report_page.dart';
+import 'report_printer_helper.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -33,7 +34,22 @@ class _HistoryPageState extends State<HistoryPage> {
           .toUpperCase()] ??
       Colors.green;
 
-  //
+  void _print(Report r) async {
+    try {
+      final p = await ReportPrinterHelper.exportToTxt(r);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Disimpan: $p"),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Gagal: $e"), backgroundColor: Colors.red),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,8 +186,11 @@ class _HistoryPageState extends State<HistoryPage> {
                     ],
                   ),
                 ),
-
-                //
+                IconButton(
+                  icon: Icon(Icons.print_outlined, color: Colors.blue[700]),
+                  onPressed: () => _print(r),
+                  style: IconButton.styleFrom(backgroundColor: Colors.blue[50]),
+                ),
               ],
             ),
           ),
