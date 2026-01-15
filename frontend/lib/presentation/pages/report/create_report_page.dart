@@ -29,7 +29,7 @@ class _CreateReportPageState extends State<CreateReportPage> {
     'Kekerasan Fisik',
     'Pelecehan',
     'Pencurian',
-    'Obat Terlarang',
+    'Narkoba',
     'Kecelakaan',
     'Judol',
     'Lainnya',
