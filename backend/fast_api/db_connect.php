@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";       
-$pass = "as"; 
-$db   = "fast_reports_db";
+$pass = ""; // sesuaikan dengan password dari DB Server
+$db   = "fast_reports_db"; //sesuaikan dengan nama database yang ada di PHPMYAdmin
 
 $conn = new mysqli($host, $user, $pass, $db);
 
