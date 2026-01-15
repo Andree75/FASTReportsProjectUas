@@ -13,6 +13,7 @@ import 'presentation/pages/dashboard/dashboard_page.dart';
 import 'presentation/pages/report/create_report_page.dart';
 import 'data/repositories/report_repository_impl.dart';
 import 'presentation/providers/report_provider.dart';
+import 'presentation/pages/report/history_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,6 +57,7 @@ void main() async {
           '/register': (context) => RegisterPage(),
           '/dashboard': (context) => DashboardPage(),
           '/create_report': (context) => CreateReportPage(),
+          '/history': (context) => HistoryPage(),
         },
       ),
     ),
