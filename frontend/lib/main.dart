@@ -6,13 +6,13 @@ import 'data/datasources/auth_local_datasource.dart';
 import 'data/datasources/auth_remote_datasource.dart';
 import 'data/datasources/report_remote_datasource.dart';
 import 'data/repositories/auth_repository_impl.dart';
+import 'data/repositories/report_repository_impl.dart';
 import 'presentation/providers/auth_provider.dart';
+import 'presentation/providers/report_provider.dart';
 import 'presentation/pages/auth/login_page.dart';
 import 'presentation/pages/auth/register_page.dart';
 import 'presentation/pages/dashboard/dashboard_page.dart';
 import 'presentation/pages/report/create_report_page.dart';
-import 'data/repositories/report_repository_impl.dart';
-import 'presentation/providers/report_provider.dart';
 import 'presentation/pages/report/history_page.dart';
 
 void main() async {
