@@ -34,6 +34,23 @@ class _HistoryPageState extends State<HistoryPage> {
           .toUpperCase()] ??
       Colors.green;
 
+  Color _getStatusColor(String status) {
+    switch (status) {
+      case 'Diproses':
+        return Colors.blue;
+      case 'Ditindak Lanjuti':
+        return Colors.purple;
+      case 'Selesai':
+        return Colors.green;
+      case 'Ditolak':
+        return Colors.red;
+      case 'Ditangguhkan':
+        return Colors.grey;
+      default:
+        return Colors.orange;
+    }
+  }
+
   void _print(Report r) async {
     try {
       final p = await ReportPrinterHelper.exportToTxt(r);
@@ -99,6 +116,8 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   Widget _reportCard(Report r) {
+    final statusColor = _getStatusColor(r.status);
+
     return Container(
       margin: EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
@@ -119,8 +138,8 @@ class _HistoryPageState extends State<HistoryPage> {
           child: Padding(
             padding: EdgeInsets.all(12),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Gambar
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
@@ -137,7 +156,6 @@ class _HistoryPageState extends State<HistoryPage> {
                   ),
                 ),
                 SizedBox(width: 15),
-                // Teks Info
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,18 +176,19 @@ class _HistoryPageState extends State<HistoryPage> {
                               style: TextStyle(
                                 fontSize: 9,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
                               ),
                             ),
                           ),
                           SizedBox(width: 5),
                           Icon(
                             Icons.circle,
-                            size: 12,
+                            size: 8,
                             color: _urgencyColor(r.urgency),
                           ),
                         ],
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 6),
                       Text(
                         r.title,
                         maxLines: 1,
@@ -179,9 +198,32 @@ class _HistoryPageState extends State<HistoryPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 4),
                       Text(
                         r.createdAt,
-                        style: TextStyle(fontSize: 12, color: Colors.black),
+                        style: TextStyle(fontSize: 11, color: Colors.grey),
+                      ),
+                      SizedBox(height: 8),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: statusColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: statusColor.withOpacity(0.3),
+                          ),
+                        ),
+                        child: Text(
+                          "Status: ${r.status}",
+                          style: TextStyle(
+                            color: statusColor,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ],
                   ),
