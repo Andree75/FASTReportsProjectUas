@@ -1,3 +1,4 @@
+// import 'dart:convert';
 import '../../domain/entities/report.dart';
 
 class ReportModel extends Report {
@@ -11,6 +12,7 @@ class ReportModel extends Report {
     required String urgency,
     required String createdAt,
     String? metadata,
+    required String status,
   }) : super(
          id: id,
          userId: userId,
@@ -21,6 +23,7 @@ class ReportModel extends Report {
          urgency: urgency,
          createdAt: createdAt,
          metadata: metadata,
+         status: status,
        );
 
   factory ReportModel.fromJson(Map<String, dynamic> json) {
@@ -32,9 +35,9 @@ class ReportModel extends Report {
       category: json['category'],
       imagePath: json['image_path'],
       urgency: json['urgency'] ?? 'Biasa',
-
       createdAt: json['created_at'],
       metadata: json['metadata'],
+      status: json['status'] ?? 'Pending',
     );
   }
 }
