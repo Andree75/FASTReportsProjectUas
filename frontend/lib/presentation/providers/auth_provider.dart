@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import '../../core/constants/api_constants.dart';
 import '../../domain/interface/auth_repository.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -64,5 +68,30 @@ class AuthProvider with ChangeNotifier {
   Future<void> logout(BuildContext context) async {
     await repository.logout();
     Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+  }
+
+  Future<bool> adminLogin(String username, String password) async {
+    _isLoading = true;
+    notifyListeners();
+    try {
+      final response = await http.post(
+        Uri.parse(ApiConstants.adminLoginEndpoint),
+        body: {'username': username, 'password': password},
+      );
+      final data = jsonDecode(response.body);
+
+      _isLoading = false;
+      notifyListeners();
+
+      if (data['status'] == true) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      _isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 }

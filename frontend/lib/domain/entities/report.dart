@@ -8,6 +8,7 @@ class Report {
   final String urgency;
   final String createdAt;
   final String? metadata;
+  final String status;
 
   Report({
     required this.id,
@@ -19,5 +20,6 @@ class Report {
     required this.urgency,
     required this.createdAt,
     this.metadata,
+    required this.status,
   });
 }
