@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
+import '../admin/admin_login_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -59,7 +60,6 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
             ),
             SizedBox(height: 20),
-
             isLoading
                 ? CircularProgressIndicator()
                 : ElevatedButton(
@@ -70,9 +70,22 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: Text("MASUK", style: TextStyle(color: Colors.white)),
                   ),
+            SizedBox(height: 8),
             TextButton(
               onPressed: () => Navigator.pushNamed(context, '/register'),
               child: Text("Belum punya akun? Daftar"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => AdminLoginPage()),
+                );
+              },
+              child: Text(
+                "Login Administrator",
+                style: TextStyle(color: Colors.black),
+              ),
             ),
           ],
         ),
