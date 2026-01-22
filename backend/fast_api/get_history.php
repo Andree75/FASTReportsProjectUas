@@ -1,30 +1,24 @@
 <?php
 include 'db_connect.php';
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *"); 
 
-$user_id = $_POST['user_id'] ?? '';
-
-if (empty($user_id)) {
-    echo json_encode(["status" => false, "message" => "User ID kosong"]);
-    exit;
+if (isset($_REQUEST['user_id'])) {
+    $user_id = $_REQUEST['user_id'];
+    $sql = "SELECT * FROM reports WHERE user_id = '$user_id' ORDER BY created_at DESC";
+} else {
+    $sql = "SELECT * FROM reports ORDER BY created_at DESC";
 }
 
-$query = "SELECT * FROM reports WHERE user_id = ? ORDER BY id DESC";
+$result = $conn->query($sql);
 
-if ($stmt = $conn->prepare($query)) {
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $data = [];
-    while ($row = $result->fetch_assoc()) {
+$data = array();
+if ($result) {
+    while($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
-
-    echo json_encode([
-        "status" => true, 
-        "data" => $data
-    ]);
+    echo json_encode(["status" => true, "data" => $data]);
 } else {
-    echo json_encode(["status" => false, "message" => "Query Error"]);
+    echo json_encode(["status" => false, "message" => "Gagal mengambil data"]);
 }
 ?>

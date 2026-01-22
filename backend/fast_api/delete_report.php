@@ -26,3 +26,4 @@ if ($stmt->execute()) {
 } else {
     echo json_encode(["status" => false, "message" => "Gagal hapus DB"]);
 }
+?>

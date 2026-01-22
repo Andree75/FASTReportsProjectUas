@@ -27,3 +27,4 @@ if ($result->num_rows > 0) {
 } else {
     echo json_encode(["status" => false, "message" => "Username tidak ditemukan"]);
 }
+?>
