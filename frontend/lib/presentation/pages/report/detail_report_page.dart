@@ -9,10 +9,28 @@ class DetailReportPage extends StatelessWidget {
   final Report report;
   const DetailReportPage({Key? key, required this.report}) : super(key: key);
 
-  Color _color(String l) =>
+  Color _urgencyColor(String l) =>
       {'DARURAT': Colors.red, 'TINGGI': Colors.orange, 'SEDANG': Colors.blue}[l
           .toUpperCase()] ??
       Colors.green;
+
+  Color _getStatusColor(String status) {
+    switch (status) {
+      case 'Diproses':
+        return Colors.blue;
+      case 'Ditindak Lanjuti':
+        return Colors.purple;
+      case 'Selesai':
+        return Colors.green;
+      case 'Ditolak':
+        return Colors.red;
+      case 'Ditangguhkan':
+        return Colors.grey;
+      default:
+        return Colors.orange;
+    }
+  }
+
   String _fmt(String k) => k.replaceAll('_', ' ').toUpperCase();
 
   @override
@@ -21,7 +39,10 @@ class DetailReportPage extends StatelessWidget {
     try {
       meta = jsonDecode(report.metadata ?? "{}");
     } catch (_) {}
-    final mainColor = _color(report.urgency);
+
+    final urgencyColor = _urgencyColor(report.urgency);
+    final statusColor = _getStatusColor(report.status);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -99,24 +120,60 @@ class DetailReportPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      // Badge Urgensi
                       Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 10,
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: mainColor.withOpacity(0.1),
+                          color: urgencyColor.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: mainColor),
+                          border: Border.all(color: urgencyColor),
                         ),
                         child: Text(
                           report.urgency.toUpperCase(),
                           style: TextStyle(
-                            color: mainColor,
+                            color: urgencyColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 10,
                           ),
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: statusColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: statusColor),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.info_outline,
+                              size: 12,
+                              color: statusColor,
+                            ),
+                            SizedBox(width: 4),
+                            Text(
+                              report.status.toUpperCase(),
+                              style: TextStyle(
+                                color: statusColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -156,7 +213,7 @@ class DetailReportPage extends StatelessWidget {
                                   Icon(
                                     Icons.label_important_outline,
                                     size: 16,
-                                    color: mainColor,
+                                    color: urgencyColor,
                                   ),
                                   SizedBox(width: 10),
                                   Expanded(
@@ -210,6 +267,7 @@ class DetailReportPage extends StatelessWidget {
                       color: Colors.black87,
                     ),
                   ),
+
                   SizedBox(height: 40),
                   Divider(),
                   Center(
