@@ -6,6 +6,7 @@ import '../../../core/constants/api_constants.dart';
 import '../../../domain/entities/report.dart';
 import 'detail_report_page.dart';
 import 'report_printer_helper.dart';
+import 'create_report_page.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -86,6 +87,21 @@ class _HistoryPageState extends State<HistoryPage> {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add_box_rounded, color: Colors.black, size: 30),
+            tooltip: "Buat Laporan Baru",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CreateReportPage()),
+              ).then((_) {
+                _initData();
+              });
+            },
+          ),
+          SizedBox(width: 8),
+        ],
       ),
       body: Consumer<ReportProvider>(
         builder: (ctx, prov, _) {
@@ -100,7 +116,6 @@ class _HistoryPageState extends State<HistoryPage> {
                 ],
               ),
             );
-
           return RefreshIndicator(
             onRefresh: () async =>
                 userId != null ? await prov.fetchHistory(userId!) : null,
