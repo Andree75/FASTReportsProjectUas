@@ -82,17 +82,21 @@ flutter run -d linux
 
 🔐 Akun Demo
 
-Role,Username,Password
-User,(Register manual di aplikasi),(Sesuai register)
-Admin,admin,admin123
+| Role | Username | Password |
+| :--- | :--- | :--- |
+| **User** | *(Register manual di aplikasi)* | *(Sesuai register)* |
+| **Admin** | `admin` | `admin123` |
+
 
 📂 Struktur Proyek
 
+```text
 lib/
-├── core/            # Konstanta API & Helper (Camera, Printer)
-├── data/            # Models & Remote Data Source (HTTP Request)
-├── domain/          # Entities & Repository Interfaces
-└── presentation/    # UI (Pages, Widgets) & State Management (Providers)
+├── core/            # Konstanta API, Konstanta Warna, & Utils (Camera Helper, Printer)
+├── data/            # Data Layer: Models (JSON Parsing) & Remote Datasource (HTTP)
+├── domain/          # Domain Layer: Entities (Objek Murni) & Repository Interfaces
+└── presentation/    # Presentation Layer: Halaman UI, Widget, & State Management (Provider)
+
 
 👨‍💻 Author
 
