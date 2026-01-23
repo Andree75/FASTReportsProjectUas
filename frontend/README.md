@@ -96,7 +96,7 @@ lib/
 ├── data/            # Data Layer: Models (JSON Parsing) & Remote Datasource (HTTP)
 ├── domain/          # Domain Layer: Entities (Objek Murni) & Repository Interfaces
 └── presentation/    # Presentation Layer: Halaman UI, Widget, & State Management (Provider)
-
+```
 
 👨‍💻 Author
 
