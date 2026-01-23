@@ -40,14 +40,6 @@
 
 ---
 
-## 📸 Screenshots
-
-|              Dashboard User               |             Detail Laporan             |              Panel Admin              |
-| :---------------------------------------: | :------------------------------------: | :-----------------------------------: |
-| _(Tempatkan Screenshot Dashboard Disini)_ | _(Tempatkan Screenshot Detail Disini)_ | _(Tempatkan Screenshot Admin Disini)_ |
-
----
-
 ## ⚙️ Instalasi & Pengaturan
 
 ### 1. Persiapan Backend (Server)
@@ -65,6 +57,7 @@ Buka file `lib/core/constants/api_constants.dart` dan sesuaikan IP Address:
 
 ````dart
 static const String serverIp = "10.0.2.2"; // Akses ke localhost Windows
+````
 
 **Untuk HP Fisik / Linux Desktop:**
 
@@ -72,9 +65,11 @@ static const String serverIp = "10.0.2.2"; // Akses ke localhost Windows
 static const String serverIp = "192.168.x.x"; // Sesuaikan IP LAN Laptop Anda
 // atau
 static const String serverIp = "localhost"; // Jika run di Desktop Linux
+```
 
 # Menjalankan Aplikasi :
 
+```bash
 # Install dependencies
 flutter pub get
 
@@ -83,6 +78,7 @@ flutter run
 
 # Run di Linux Desktop (Pastikan install fswebcam: sudo apt install fswebcam)
 flutter run -d linux
+```
 
 🔐 Akun Demo
 
@@ -102,32 +98,31 @@ lib/
 
 Dikembangkan oleh Andri Darmawan (3012310004) sebagai Proyek Akhir Mata Kuliah Pemrograman Aplikasi Mobile.
 
-# Screenshot cuplikan Aplikasi:
+## 📸 Screenshots cuplikan Aplikasi:
 
 ## Login & Register:
 
-![alt text](image.png)
+<img width="405" height="699" alt="image" src="https://github.com/user-attachments/assets/d2425f87-0e71-438d-a172-ad57fe4c13f4" />
 
-![alt text](image-1.png)
+<img width="406" height="700" alt="image-1" src="https://github.com/user-attachments/assets/b3dde441-232b-4745-ba95-42d8e5e3fffd" />
 
-![alt text](image-2.png)
+<img width="406" height="700" alt="image-2" src="https://github.com/user-attachments/assets/8eb8fd7d-a0fd-467c-8e15-0c705adf87e7" />
+
 
 ## Dashboard Apps :
 
-![alt text](image-3.png)
+<img width="407" height="697" alt="image-3" src="https://github.com/user-attachments/assets/fad7d3b9-d4e3-4384-bee1-dbd190850946" />
 
-![alt text](image-5.png)
+<img width="407" height="697" alt="image-5" src="https://github.com/user-attachments/assets/e679c7e2-40a4-4a8f-a81d-f6a3412650af" />
 
-![alt text](image-6.png)
+<img width="406" height="706" alt="image-6" src="https://github.com/user-attachments/assets/562231be-c869-4706-98f8-e40a05631eec" />
 
-![alt text](image-9.png)
+<img width="404" height="697" alt="image-9" src="https://github.com/user-attachments/assets/27148fda-7b07-42ed-a177-cf7238e53073" />
 
-![alt text](image-10.png)
+<img width="407" height="701" alt="image-10" src="https://github.com/user-attachments/assets/02399e6d-3bdf-4378-8d76-2742d9ee5ca1" />
 
 ## Riwayat & Detail Laporan:
 
-![alt text](image-7.png)
+<img width="405" height="701" alt="image-7" src="https://github.com/user-attachments/assets/f63ad924-b84c-4f20-a6d2-938a3ce8dbd5" />
 
-![alt text](image-8.png)
-
-````
+<img width="407" height="700" alt="image-8" src="https://github.com/user-attachments/assets/db5aab2a-5833-4c8e-ac13-a6fc6aefe1f5" />
