@@ -1,78 +1,133 @@
-# 🚨 Fast Reports App
+# 🚀 FAST Reports (Flutter Automated Safety & Tracking Reports)
 
-![Flutter](https://img.shields.io/badge/Flutter-3.0%2B-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![PHP](https://img.shields.io/badge/Backend-Native%20PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MariaDB](https://img.shields.io/badge/Database-MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
-![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
+![Flutter](https://img.shields.io/badge/Flutter-3.0%2B-blue)
+![PHP](https://img.shields.io/badge/Backend-PHP%20Native-purple)
+![MySQL](https://img.shields.io/badge/Database-MySQL-orange)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Linux%20Desktop-lightgrey)
 
-> **Platform Pelaporan Warga Tercepat & Terstruktur.**
-> Aplikasi mobile berbasis Flutter untuk melaporkan insiden darurat dengan formulir dinamis dan bukti lapor digital.
-
-## ✨ Fitur Utama (Key Features)
-
-Aplikasi ini dirancang untuk kecepatan dan akurasi data:
-
-### 1. 🎨 Modern Dashboard UI
-- **Grid Menu 4 Kolom:** Tampilan ikon proporsional dan rapi.
-- **Visual Style:** Tombol kategori berbentuk *Squircle* dengan *Gradient Background* dan *Colored Shadow* (Glow Effect).
-- **Iconography:** Menggunakan ikon visual yang relevan (misal: `smartphone_rounded` untuk Judol).
-
-### 2. 📝 Dynamic Form Engine
-Formulir input berubah otomatis berdasarkan kategori yang dipilih:
-- **Judol:** Input Link Situs, Rekening Bandar.
-- **Fisik/Kecelakaan:** Input Jumlah Korban, Jenis Luka.
-- **Pencurian:** Input Barang Hilang, Estimasi Kerugian.
-- **Lainnya:** Input Jenis Bahaya, Patokan Lokasi.
-
-### 3. 🚨 Urgency Selector
-Sistem penandaan prioritas menggunakan **Choice Chips** berwarna:
-- 🟢 Biasa
-- 🔵 Sedang
-- 🟠 Tinggi
-- 🔴 **DARURAT**
-
-### 4. 🖨️ Offline Receipt Printing
-- Fitur unik untuk mencetak bukti laporan mandiri.
-- Menghasilkan file **.txt (Plain Text)** dengan format struk (*Receipt Style*).
-- File tersimpan otomatis di folder `Downloads` perangkat.
-
-### 5. 📱 Smart Layout Detail
-- Header gambar dengan gaya **Rounded Bottom**.
-- Tata letak teks metadata yang cerdas (Teks panjang otomatis turun baris/wrap).
+**FAST Reports** adalah aplikasi pelaporan insiden multi-platform (Mobile & Desktop) yang dirancang untuk kecepatan dan ketepatan data. Aplikasi ini memungkinkan pengguna melaporkan kejadian darurat (Kecelakaan, Kriminal, Judol, Narkoba) dengan bukti visual realtime dan formulir yang adaptif.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Fitur Unggulan
 
-### Client (Mobile)
-- **Framework:** Flutter (Dart)
-- **State Management:** Provider
-- **Networking:** HTTP Package
-- **Local Storage:** Shared Preferences
-- **File IO:** Path Provider (untuk unduh struk)
+### 📱 1. User Side (Pelapor)
 
-### Server (Backend)
-- **OS:** Linux Ubuntu Server
-- **Web Server:** Apache2
-- **Language:** Native PHP (No Framework)
-- **Database:** MariaDB
+- **Dynamic Form System:** Formulir input berubah otomatis sesuai kategori laporan.
+  - _Contoh:_ Kategori "Kecelakaan" meminta data kendaraan, sedangkan "Judol" meminta link situs/rekening.
+- **Hybrid Camera Engine:**
+  - 📸 **Android:** Menggunakan Native Camera API.
+  - 💻 **Linux Desktop:** Mengintegrasikan `fswebcam` driver untuk dukungan webcam laptop/eksternal.
+- **Real-time Status Tracking:** Memantau status laporan (Pending ➝ Diproses ➝ Selesai) secara langsung.
+- **Export Evidence:** Fitur cetak bukti laporan ke format `.txt` untuk arsip fisik.
+- **Offline Capability:** Login session tersimpan (Auto-login).
+
+### 🛡️ 2. Admin Panel (Pengelola)
+
+- **Integrated Dashboard:** Panel admin menyatu dalam satu aplikasi (Role-Based Access).
+- **Status Management:** Admin dapat mengubah status laporan (`Diproses`, `Ditindak Lanjuti`, `Selesai`, `Ditolak`) dan user akan melihat perubahannya seketika.
+- **Quick Review:** Melihat detail laporan lengkap dengan foto bukti dan metadata lokasi.
 
 ---
 
-## 🚀 Cara Instalasi (Getting Started)
+## 🛠️ Teknologi yang Digunakan
 
-### Persyaratan
-- Flutter SDK
-- Web Server (XAMPP / Apache di Linux)
-- MySQL / MariaDB
+- **Frontend:** Flutter (Dart) dengan Clean Architecture (Presentation, Domain, Data layers).
+- **Backend:** PHP Native (REST API).
+- **Database:** MySQL / MariaDB.
+- **State Management:** Provider.
+- **Tools:** Android Studio, VS Code, XAMPP (Windows) / Apache (Linux).
 
-### 1. Setup Backend
-1. Buat database baru bernama `fast_reports_db`.
-2. Import file SQL (tabel `users` dan `reports`).
-3. Upload folder `api/` ke root server Anda (`/var/www/html/` atau `htdocs`).
-4. Pastikan folder `uploads/` memiliki permission write (`chmod 777`).
+---
 
-### 2. Setup Frontend (Flutter)
-1. Clone repository ini:
-   ```bash
-   git clone [https://github.com/username/fast-reports.git](https://github.com/username/fast-reports.git)
+## 📸 Screenshots
+
+|              Dashboard User               |             Detail Laporan             |              Panel Admin              |
+| :---------------------------------------: | :------------------------------------: | :-----------------------------------: |
+| _(Tempatkan Screenshot Dashboard Disini)_ | _(Tempatkan Screenshot Detail Disini)_ | _(Tempatkan Screenshot Admin Disini)_ |
+
+---
+
+## ⚙️ Instalasi & Pengaturan
+
+### 1. Persiapan Backend (Server)
+
+1.  Pastikan **XAMPP** (Windows) atau **Apache/Nginx** (Linux) sudah terinstall.
+2.  Buat database baru di PHPMyAdmin bernama `fast_reports`.
+3.  Import file SQL yang disertakan (`fast_reports.sql`) ke database tersebut.
+4.  Pindahkan folder `backend/fast_api` ke folder `htdocs` (Windows) atau `/var/www/html` (Linux).
+
+### 2. Konfigurasi Aplikasi (Flutter)
+
+Buka file `lib/core/constants/api_constants.dart` dan sesuaikan IP Address:
+
+**Untuk Android Emulator:**
+
+````dart
+static const String serverIp = "10.0.2.2"; // Akses ke localhost Windows
+
+**Untuk HP Fisik / Linux Desktop:**
+
+```dart
+static const String serverIp = "192.168.x.x"; // Sesuaikan IP LAN Laptop Anda
+// atau
+static const String serverIp = "localhost"; // Jika run di Desktop Linux
+
+# Menjalankan Aplikasi :
+
+# Install dependencies
+flutter pub get
+
+# Run di Android Emulator
+flutter run
+
+# Run di Linux Desktop (Pastikan install fswebcam: sudo apt install fswebcam)
+flutter run -d linux
+
+🔐 Akun Demo
+
+Role,Username,Password
+User,(Register manual di aplikasi),(Sesuai register)
+Admin,admin,admin123
+
+📂 Struktur Proyek
+
+lib/
+├── core/            # Konstanta API & Helper (Camera, Printer)
+├── data/            # Models & Remote Data Source (HTTP Request)
+├── domain/          # Entities & Repository Interfaces
+└── presentation/    # UI (Pages, Widgets) & State Management (Providers)
+
+👨‍💻 Author
+
+Dikembangkan oleh Andri Darmawan (3012310004) sebagai Proyek Akhir Mata Kuliah Pemrograman Aplikasi Mobile.
+
+# Screenshot cuplikan Aplikasi:
+
+## Login & Register:
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+## Dashboard Apps :
+
+![alt text](image-3.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+## Riwayat & Detail Laporan:
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+````
