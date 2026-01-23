@@ -1,5 +1,6 @@
 class ApiConstants {
-  // Jika pakai emulator android studio Pakai IP bawaan emulator ContD
+  // Jika pakai emulator android studio Ganti serverIp ke IP dari emulatornya ContD:
+  //static const String serverIp = "10.0.2.2";
   static const String serverIp = "localhost";
   static const String baseUrl = "http://$serverIp/fast_api";
   static const String imageBaseUrl = baseUrl;
